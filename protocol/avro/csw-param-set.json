@@ -1,0 +1,241 @@
+{
+  "namespace": "org.tmt.services",
+  "type": "record",
+  "name": "ParameterSet",
+  "fields": [
+    {
+      "name": "prefix",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "logicalType": "timestamp-micros"
+    },
+    {
+      "name": "value",
+      "type": {
+        "type": "array",
+        "items": [
+          {
+            "type": "record",
+            "name": "BooleanItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "boolean"
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "BooleanArrayItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": "boolean"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "IntItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "int"
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "IntArrayItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": "int"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "LongItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "long"
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "LongArrayItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": "long"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "FloatItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "float"
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "FloatArrayItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": "float"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "DoubleItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "double"
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "DoubleArrayItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": "double"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "CharItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": "bytes"
+              }
+            ]
+          },
+          {
+            "type": "record",
+            "name": "StringItem",
+            "fields": [
+              {
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": {
+                  "type": "array",
+                  "items": "string"
+                }
+              }
+            ]
+          },
+          "org.tmt.services.ParameterSet"
+        ]
+      }
+    }
+  ]
+}

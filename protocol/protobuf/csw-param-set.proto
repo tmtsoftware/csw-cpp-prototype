@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package tmt.services;
+
+
+message BooleanItem {
+    string keyName = 1;
+    repeated bool values = 2;
+}
+
+message ByteItem {
+    string keyName = 1;
+    repeated uint32 values = 2;  // could use bytes?
+    string units = 3;
+}
+
+message ByteArray {
+    repeated uint32 values = 1;
+}
+
+message ByteArrayItem {
+    string keyName = 1;
+    repeated ByteArray values = 2;  // could use bytes?
+    string units = 3;
+}
+
+message ShortItem {
+    string keyName = 1;
+    repeated sint32 values = 2;
+    string units = 3;
+}
+
+// This is signed 32 bit int
+message SInt32Array {
+    repeated sint32 values = 1;
+}
+
+message ShortArrayItem {
+    string keyName = 1;
+    repeated SInt32Array values = 2;
+    string units = 3;
+}
+
+message IntItem {
+    string keyName = 1;
+    repeated sint32 values = 2;
+    string units = 3;
+}
+
+message IntArrayItem {
+    string keyName = 1;
+    repeated SInt32Array values = 2;
+    string units = 3;
+}
+
+message LongItem {
+    string keyName = 1;
+    repeated sint64 values = 2;
+    string units = 3;
+}
+
+// This is signed 64 bit int
+message SInt64Array {
+    repeated sint64 values = 1;
+}
+
+message LongArrayItem {
+    string keyName = 1;
+    repeated SInt64Array values = 2;
+    string units = 3;
+}
+
+message FloatItem {
+    string keyName = 1;
+    repeated float values = 2;
+    string units = 3;
+}
+
+message FloatArray {
+    repeated float values = 1;
+}
+
+message FloatArrayItem {
+    string keyName = 1;
+    repeated FloatArray values = 2;
+    string units = 3;
+}
+
+message DoubleItem {
+    string keyName = 1;
+    repeated double values = 2;
+    string units = 3;
+}
+
+message DoubleArray {
+    repeated double values = 1;
+}
+
+message DoubleArrayItem {
+    string keyName = 1;
+    repeated DoubleArray values = 2;
+    string units = 3;
+}
+
+message StringItem {
+    string keyName = 1;
+    repeated string values = 2;
+}
+
+message CharItem {
+    string keyName = 1;
+    bytes values = 2;
+}
+
+
+// ChoiceItem?
+// StructItem?
+
+message Parameter {
+    oneof member {
+        BooleanItem booleanItem = 1;
+        ByteItem byteItem = 2;
+        ShortItem shortItem = 3;
+        IntItem intItem = 4;
+        LongItem longItem = 5;
+        FloatItem floatItem = 6;
+        DoubleItem doubleItem = 7;
+        StringItem stringItem = 8;
+        CharItem charItem = 16;
+        ByteArrayItem byteArrayItem = 10;
+        ShortArrayItem shortArrayItem = 11;
+        IntArrayItem intArrayItem = 12;
+        LongArrayItem longArrayItem = 13;
+        FloatArrayItem floatArrayItem = 14;
+        DoubleArrayItem doubleArrayItem = 15;
+        Parameter parameter = 9;
+        // Note: if any more are added, the tag numbers 1-15 should be used for the most commonly used items
+    }
+}
+
+message Event {
+    google.protobuf.Timestamp eventTime = 1;
+    string prefix = 2;
+    repeated Parameter parameters = 3;
+}
