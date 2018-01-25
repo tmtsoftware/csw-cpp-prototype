@@ -9,8 +9,14 @@ using namespace std::placeholders;
 
 void RedisSubscriber::connect() {
 
-    redisClient.connect("127.0.0.1", 6379, [](cpp_redis::redis_subscriber& client) {
-        RedisSubscriber::handleDisconnect(client);
+//    redisClient.connect("127.0.0.1", 6379, [](cpp_redis::subscriber& client) {
+//        RedisSubscriber::handleDisconnect(client);
+//    });
+
+    redisClient.connect("127.0.0.1", 6379, [](const std::string& host, std::size_t port, cpp_redis::subscriber::connect_state status) {
+        if (status == cpp_redis::subscriber::connect_state::dropped) {
+            std::cout << "client disconnected from " << host << ":" << port << std::endl;
+        }
     });
 
     if (redisClient.is_connected()) {
@@ -44,7 +50,7 @@ void RedisSubscriber::subscribeAll() {
 
 }
 
-void RedisSubscriber::handleDisconnect(cpp_redis::redis_subscriber &) {
+void RedisSubscriber::handleDisconnect(cpp_redis::subscriber &) {
     std::cout << "sub disconnected (disconnection handler)" << std::endl;
 }
 

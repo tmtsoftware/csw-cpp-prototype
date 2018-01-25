@@ -8,6 +8,7 @@
 #include <rdkafka.h>
 #include "ServiceSubscriber.h"
 #include "rdkafkacpp.h"
+#include <atomic>
 
 class KafkaSubscriber : public ServiceSubscriber {
 public:

@@ -4,6 +4,7 @@
 
 #include <sstream>   // stringstream
 #include <iomanip>   // put_time
+#include <iostream>
 #include <google/protobuf/repeated_field.h>
 
 #include "ProtocolBufferEventDecoder.h"

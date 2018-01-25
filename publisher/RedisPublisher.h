@@ -8,7 +8,7 @@
 
 #include <string>
 #include "ServicePublisher.h"
-#include <cpp_redis/redis_client.hpp>
+#include <cpp_redis/core/client.hpp>
 
 class RedisPublisher : public ServicePublisher {
 public:
@@ -16,8 +16,8 @@ public:
     void connect() override;
     void publish(std::string key, std::string value) override;
 private:
-    cpp_redis::redis_client redisClient;
-    static void handleDisconnect(cpp_redis::redis_client&);
+    cpp_redis::client redisClient;
+    static void handleDisconnect(cpp_redis::client&);
     static void handlePublishResponse(cpp_redis::reply &reply);
 
 };

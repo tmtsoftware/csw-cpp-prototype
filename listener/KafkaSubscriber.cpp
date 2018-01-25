@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <zconf.h>
+#include <csignal>
 #include "KafkaSubscriber.h"
 
 static int exit_eof = 0;
@@ -187,7 +188,7 @@ void KafkaSubscriber::msg_process(rd_kafka_message_t *rkmessage) {
                     "%% Consumer reached end of %s [%d] "
                             "message queue at offset %lld\n",
                     rd_kafka_topic_name(rkmessage->rkt),
-                    rkmessage->partition, rkmessage->offset);
+                    rkmessage->partition, static_cast<long long int>(rkmessage->offset));
 
             if (exit_eof && --wait_eof == 0) {
                 fprintf(stderr, "%% All partition(s) reached EOF: exiting\n");
@@ -203,7 +204,7 @@ void KafkaSubscriber::msg_process(rd_kafka_message_t *rkmessage) {
                             "offset %lld: %s\n",
                     rd_kafka_topic_name(rkmessage->rkt),
                     rkmessage->partition,
-                    rkmessage->offset,
+                    static_cast<long long int>(rkmessage->offset),
                     rd_kafka_message_errstr(rkmessage));
         else
             fprintf(stderr, "%% Consumer error: %s: %s\n",
@@ -221,7 +222,7 @@ void KafkaSubscriber::msg_process(rd_kafka_message_t *rkmessage) {
                         "offset %lld, %zd bytes):\n",
                 rd_kafka_topic_name(rkmessage->rkt),
                 rkmessage->partition,
-                rkmessage->offset, rkmessage->len);
+                static_cast<long long int>(rkmessage->offset), rkmessage->len);
 
         if (rkmessage->key_len) {
 
