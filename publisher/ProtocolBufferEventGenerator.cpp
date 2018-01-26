@@ -4,6 +4,7 @@
 
 #include "ProtocolBufferEventGenerator.h"
 #include <google/protobuf/util/time_util.h>
+#include <csw-param-set.pb.h>
 
 
 ProtocolBufferEventGenerator::ProtocolBufferEventGenerator() {
