@@ -52,7 +52,9 @@ int main(int argc, char **argv) {
 
         int ii = 123;
 
-        while (1) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+        while (true) {
             evGen->constructSampleEvent();
 //            pub->publish("testEvent", evGen->getEventString());
 
@@ -60,6 +62,7 @@ int main(int argc, char **argv) {
             ii++;
             sleep(1);
         }
+#pragma clang diagnostic pop
     } catch (std::exception& e) {
         std::cerr << e.what() << std::endl;
     }
